@@ -1,11 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Flask Tutorial</title>
-  </head>
-  <body>
-    <h1> My First Try Using Flask </h1>
-    <p> Flask is Fun </p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">	
+<style>
+.R2 {width: 40% ;margin:auto;} 
+</style>
+    <title>Resume Blaster-Prototype-</title>
+    <!-- Font Icon --->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.min.css">
+
+    <!-- Main css --->
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body background="form-img.jpg">
+<!---^broken-->
+<fieldset class ="R2">
+	<legend> Resume Blaster </legend>
+    <div class="main">
+        
+        <!---<div class="header">
+            <img src="images/header-text.png" alt="">
+            <img src="images/dots.png" alt="">
+        </div>--->
+        <div class="container">
+            <form id="login-form" class="login-form" method="POST">
+                <div class="form-group">
+                    <div class="form-name">
+                        <br><label for="name">Name</label></br>
+                        <input type="text" id="name" name="name" placeholder="Enter Full Name" />
+                    </div>
+                    <div class="form-email">
+                        <br><label for="date_email">Email</label></br>
+                        <input type="text" id="date_email" class="date_email" placeholder="Enter Email" />
+                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
+                    </div>
+					<div class="form-dob">
+                        <br><label for="dob">Date of Birth</label></br>
+                        <input type="text" id="dob" class="dob" placeholder="xx/xx/xxxx" />
+                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
+                    </div>
+                    <div class="form-address">
+                        <br><label for="date_address">Address</label></br>
+                        <input type="text" id="address" class="address" placeholder="Select Location" />
+						<!-- Location of job or home? -->
+                    </div>
+                    <div class="form-phonenumber">
+                        <br><label for="phonenumber">Phone Number</label></br>
+                        <input type="number" name="phonenumber" id="phonenumber" placeholder="EX(999)-999-9999">
+                    </div>
+                    <div class="form-submit">
+                        <input type="submit" id="submit" class="submit" value="Submit" />
+                    </div>
+					</div>
+                    <div class="form-newuser">
+                        <a href = "css/style.css"</a> New User?
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</fieldset>
+    <!-- JS --->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
 </html>
