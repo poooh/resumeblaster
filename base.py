@@ -60,7 +60,7 @@ def user_auhentication():
     # cursor.execute(query)
     # conn.commit()
     # conn.close()
-    return render_template("index.html")
+    return render_template("uploadfile.html")
 
 
 def send_mail(send_from, send_to, subject, text, files=None):
