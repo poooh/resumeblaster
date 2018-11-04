@@ -2,7 +2,7 @@ from flask import Flask
 from flask import Flask, render_template
 from flaskext.mysql import MySQL
 import pymysql
-import MySQLdb
+#import MySQLdb
 
 app = Flask(__name__)
 # @app.route("/")
