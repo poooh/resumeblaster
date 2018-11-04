@@ -21,9 +21,8 @@
     <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.min.css">
 
     <!-- Main css --->
-    <link rel="stylesheet" href="css/style.css"> 
 </head>
-<body background="form-img.jpg">
+<body>
 <!---^broken-->
 <fieldset class ="R2">
 	<legend> Resume Blaster </legend>
@@ -57,9 +56,9 @@
 
 <form action="{{ url_for('upload') }}" method="GET" enctype="multipart/form-data" >
     <label class="btn btn-default btn-file">
-        Browse <input <input type="file" name="image" style="display: none;">
+        Browse <input <input type="file" name="file" style="display: none;">
     </label>
-    <input type="submit" value="Upload your image" class="btn btn-primary">
+    <input type="submit" value="Upload your file" class="btn btn-primary">
 </form>
 
 <div class="text-center">

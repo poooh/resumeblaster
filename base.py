@@ -37,7 +37,7 @@ def create_table():
 create_table()
 
 
-UPLOAD_FOLDER = os.path.basename('/home/pooja/Downloads')
+UPLOAD_FOLDER = os.path.basename('/home/pooja/Documents/resumeblaster')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -93,14 +93,24 @@ def send_mail(send_from, send_to, subject, text, files=None):
 @app.route("/upload", methods=['GET'])
 def upload():
     print request.args
-    file = request.args['image']
-    filename = os.path.join(app.config['UPLOAD_FOLDER'], file)
+    file = request.args['file']
+    print type(file)
+    with open('/home/pooja/Downloads/%s'%(file), 'r') as theFile:
+        file = theFile.read()
+    print type(file)
+    # import sys
+    # sys.exit()
+    # file.save(os.path.join(app.config['/upimgs/'], file))
+    with open('/home/pooja/Documents/resumeblaster/resume.pdf', 'w') as file_data:
+        file_data.write(file)
+    file = request.args['file']
+    # filename = os.path.join(app.config['UPLOAD_FOLDER'], file)
     # add your custom code to check that the uploaded file is a valid image and not a malicious file (out-of-scope for this post)
     # print filename
     # import sys
     # sys.exit()
     # file.write(filename)
-    return render_template("index.html", filedata = filename)
+    return render_template("index.html", filedata = file)
 
 
 
