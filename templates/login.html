@@ -6,9 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">	
 <style>
-.R2 {width: 40% ;margin:auto;} 
+.R2 {width: 40% ;margin:auto; border:2px solid teal;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;	
+    border-radius:8px; background-color:#CCC;}
+body { 
+    background-image: url("https://www.franklinarts.com/media/artwork-primary/AQUA-Panoramic-Beach-Franklin-Arts.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; }
+
+legend{font-size: 45px; }	
 </style>
-    <title>Resume Blaster-Prototype-</title>
+    <title>Resume Blaster</title>
     <!-- Font Icon --->
    <!--  <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.min.css"> -->
@@ -16,10 +26,9 @@
     <!-- Main css --->
     <!-- <link rel="stylesheet" href="css/style.css">  -->
 </head>
-<body background="form-img.jpg">
-<!---^broken-->
+<body>
 <fieldset class ="R2">
-	<legend> Resume Blaster </legend>
+	<legend><h4>Resume Blaster</h4></legend>
     <div class="main">
         
         <!---<div class="header">
@@ -30,34 +39,35 @@
             <form id="login-form" class="login-form" action="{{ url_for('user_auhentication') }}" method="GET">
                 <div class="form-group">
                     <div class="form-name">
-                        <br><label for="name">Name</label></br>
+                        <br><label for="name"><b>Name</b></label></br>
+						<img src="https://media.giphy.com/media/frgHDDBbLhEzu/giphy.gif" title="S-S-STYLISH" style="width:300px;height:300px; float: right;" />
                         <input type="text" id="name" name="name" placeholder="Enter Full Name" />
                     </div>
                     <div class="form-email">
-                        <br><label for="date_email">Email</label></br>
+                        <br><label for="date_email"><b>Email</b></label></br>
                         <input type="text" name="email" id="date_email" class="date_email" placeholder="Enter Email" />
                         <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
                     </div>
 					<div class="form-dob">
-                        <br><label for="dob">Date of Birth</label></br>
+                        <br><label for="dob"><b>Date of Birth</b></label></br>
                         <input type="text" name="dob" id="dob" class="dob" placeholder="xx/xx/xxxx" />
                         <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
                     </div>
                     <div class="form-address">
-                        <br><label for="date_address">Address</label></br>
+                        <br><label for="date_address"><b>Address</b></label></br>
                         <input type="text" name="address" id="address" class="address" placeholder="Select Location" />
-						<!-- Location of job or home? -->
+						<!-- Location of home -->
                     </div>
                     <div class="form-phonenumber">
-                        <br><label for="phonenumber">Phone Number</label></br>
+                        <br><label for="phonenumber"><b>Phone Number</b></label></br>
                         <input type="number" name="phonenumber" id="phonenumber" placeholder="EX(999)-999-9999">
                     </div>
                     <div class="form-submit">
-                        <input type="submit" id="submit" class="submit" value="Submit" />
+                        <br><input type="submit" id="submit" class="submit" value="Submit" /></br>
                     </div>
 					</div>
                     <div class="form-newuser">
-                        <a href = "css/style.css"</a> New User?
+                        <br><a href = ""</a> New User?</br> <!-- Put link adduser here --->
                     </div>
                 </div>
             </form>
