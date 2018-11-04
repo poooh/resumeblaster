@@ -26,3 +26,8 @@ function Giam(){
         document.getElementById("quantity").value = parseInt(x) -1;
     }
 }
+
+
+function userauth(){
+    alert("hello");
+}
