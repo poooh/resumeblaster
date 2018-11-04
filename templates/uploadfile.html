@@ -13,87 +13,74 @@
 .box__error {display: none; }
 .add {margin-right: 50%;}
 .button { color: blue} 
+body { 
+    background-image: url("https://www.franklinarts.com/media/artwork-primary/AQUA-Panoramic-Beach-Franklin-Arts.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; }
 
 </style>
     <title>Resume Blaster-Prototype-</title>
     <!-- Font Icon --->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.min.css">
-
-    <!-- Main css --->
-    <link rel="stylesheet" href="css/style.css"> 
+    <title>Transmiting..</title>
 </head>
-<body background="form-img.jpg">
-<!---^broken-->
+<body>
 <fieldset class ="R2">
-	<legend> Resume Blaster </legend>
-	<!--<div class="container">-->
+	<legend>Resume Blaster</legend>
 	<div class="form-group">
-				<form name="add_company" id="add_company">
+				<form action="{{ url_for('companies') }}" method="GET" name="add_company" id="add_company">
 					<div class="table-responsive">
 						<table class="table table-bordered" id="dynamic_field">
 							<tr>
-								<td><input type = "text" name = "company[]" placeholder = "Enter Company Name" class = "form-control name_list" /></td>
-								<td><input type="text" name="email[]" placeholder="Enter company email" class="form-control name_list" /></td>
+								<td><input type = "text" name = "company0" placeholder = "Enter Company Name" class = "form-control name_list" /></td>
+								<td><input type="text" name="compemail0" placeholder="Enter company email" class="form-control name_list" /></td>
 							    <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
 							</tr>
 						</table>
-						<!--<input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />-->
 					</div>
+					<input type="submit" value="SAVE" class="btn btn-primary">
 				</form>
 			</div>
-		<!--</div>-->
+			<div>
+			<tr>
+			<td><label {{compenamelist}} /></td>
+					<td><label {{compenmaillist}} /></td></div>
+			</tr>
+			<div>{{error}}</div>
 	</body>
-   <!--  <form class="box" method="post" action="" enctype="multipart/form-data">
-  <div class="box__input">
-    <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-    <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
-    <button class="box__button" class="upload" type="submit">Upload</button>
-  </div>
-  <div class="box__uploading">Uploading&hellip;</div>
-  <div class="box__success">Done!</div>
-  <div class="box__error">Error! <span></span>.</div>
-</form> -->
 
-<form action="{{ url_for('upload') }}" method="GET" enctype="multipart/form-data" >
-    <label class="btn btn-default btn-file">
-        Browse <input <input type="file" name="image" style="display: none;">
-    </label>
-    <input type="submit" value="Upload your image" class="btn btn-primary">
-</form>
-
-<div class="text-center">
-            <div>
+<div class="text-center" style="align-self: flex center">
+            <div style= "float: right; width: 90px">
                 <strong> {{ filedata }} </strong>
             </div>
 </div>
+<form action="{{ url_for('upload') }}" method="GET" enctype="multipart/form-data" >
+    <label class="btn btn-default btn-file">
+        Browse <input <input type="file" name="file" style="display: none;">
+    </label>
+    <input type="submit" value="Upload your file" class="btn btn-primary">
+</form>
+
+<form action="{{ url_for('send_mail') }}" method="GET" enctype="multipart/form-data" >
+    <input type="submit" value="sendAll" class="btn btn-primary">
+</form>
+
 
 </fieldset>
-    <!-- JS --->
+
 <script>
 $(document).ready(function(){
-	var i=1;
+	var i=0;
 	$('#add').click(function(){
 		i++;
-		$('#dynamic_field').append('<tr id="row'+i+'"><td> <input type="text" name="company[]" placeholder="Enter company name" class="form-control name_list" /</td><td><input type="text" name="email[]" placeholder="Enter company email" class="form-control name_list" /</td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+		$('#dynamic_field').append('<tr id="row'+i+'"><td> <input type="text" name = company'+i+' placeholder="Enter company name" class="form-control name_list" /</td><td><input type="text" name = compemail'+i+' placeholder="Enter company email" class="form-control name_list" /</td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
 	});
 	
 	$(document).on('click', '.btn_remove', function(){
 		var button_id = $(this).attr("id"); 
 		$('#row'+button_id+'').remove();
-	});
-	
-	$('#submit').click(function(){		
-		$.ajax({
-			url:"name.php",
-			method:"GET",
-			data:$('#add_company').serialize(),
-			success:function(data)
-			{
-				alert(data);
-				$('#add_company')[0].reset();
-			}
-		});
 	});
 	
 });
