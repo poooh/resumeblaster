@@ -3,7 +3,6 @@ from flaskext.mysql import MySQL
 import flask
 import smtplib
 import os
-import requests
 from os.path import basename
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
@@ -53,7 +52,6 @@ def login():
 
 @app.route("/user_auhentication", methods=['GET'])
 def user_auhentication():
-    # sessiondata = requests.session()
     uname = request.args['name']
     uemail = request.args['email']
     uphonenumber = request.args['phonenumber']
@@ -65,6 +63,8 @@ def user_auhentication():
     query = "select * from user where email = '%s';"% (uemail)
     result = cursor.execute(query)
     if(result):
+        conn.commit()
+        conn.close()
         return render_template("login.html", error = "email already exists")
     else:
         query1 = "INSERT INTO user (username, email, phone, DOB, Address) VALUES ('%s', '%s', '%s', '%s', '%s');"% (uname, uemail, uphonenumber, datetime_object, uaddress)
@@ -83,6 +83,11 @@ def user_auhentication():
 @app.route("/send_mail", methods=['GET'])
 def send_mail():
     # assert isinstance(send_to, list)
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    query = "select compemail from companies where user_id = '%s';"% (request.cookies.get('user_id'))
+    cursor.execute(query)
+    resultset = cursor.fetchall()
     send_from = request.cookies.get('email')
     filedata = request.cookies.get('filedata')
     username = request.cookies.get('uname')
@@ -106,7 +111,8 @@ def send_mail():
     smtp = smtplib.SMTP('smtp.gmail.com',587)
     smtp.starttls()
     smtp.login(send_from, "bal@11335")
-    smtp.sendmail(send_from, send_to, msg.as_string())
+    for isend_to in resultset:
+        smtp.sendmail(send_from, isend_to, msg.as_string())
     smtp.close()
     return render_template("thankyou.html")
 
