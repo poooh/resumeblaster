@@ -80,7 +80,7 @@ def send_mail(send_from, send_to, subject, text, files=None):
     # print part
     msg.attach(part)
     # print msg
-    print send_to
+    #print send_to
     smtp = smtplib.SMTP('smtp.gmail.com',587)
     # smtp = smtplib.SMTP("mail.openedoo.org", 465)
     smtp.starttls()
