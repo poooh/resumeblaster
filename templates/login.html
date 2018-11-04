@@ -9,11 +9,11 @@
 </style>
     <title>Resume Blaster-Prototype-</title>
     <!-- Font Icon --->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.min.css">
+   <!--  <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.min.css"> -->
 
     <!-- Main css --->
-    <link rel="stylesheet" href="css/style.css"> 
+    <!-- <link rel="stylesheet" href="css/style.css">  -->
 </head>
 <body background="form-img.jpg">
 <!---^broken-->
@@ -26,7 +26,7 @@
             <img src="images/dots.png" alt="">
         </div>--->
         <div class="container">
-            <form id="login-form" class="login-form" method="POST">
+            <form id="login-form" class="login-form" action="{{ url_for('user_auhentication') }}" method="GET">
                 <div class="form-group">
                     <div class="form-name">
                         <br><label for="name">Name</label></br>
@@ -34,17 +34,17 @@
                     </div>
                     <div class="form-email">
                         <br><label for="date_email">Email</label></br>
-                        <input type="text" id="date_email" class="date_email" placeholder="Enter Email" />
+                        <input type="text" name="email" id="date_email" class="date_email" placeholder="Enter Email" />
                         <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
                     </div>
 					<div class="form-dob">
                         <br><label for="dob">Date of Birth</label></br>
-                        <input type="text" id="dob" class="dob" placeholder="xx/xx/xxxx" />
+                        <input type="text" name="dob" id="dob" class="dob" placeholder="xx/xx/xxxx" />
                         <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
                     </div>
                     <div class="form-address">
                         <br><label for="date_address">Address</label></br>
-                        <input type="text" id="address" class="address" placeholder="Select Location" />
+                        <input type="text" name="address" id="address" class="address" placeholder="Select Location" />
 						<!-- Location of job or home? -->
                     </div>
                     <div class="form-phonenumber">
@@ -65,8 +65,8 @@
     </div>
 </fieldset>
     <!-- JS --->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/jquery-ui/jquery-ui.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js"></script> -->
 </body>
 </html>

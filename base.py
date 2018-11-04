@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request
 from flaskext.mysql import MySQL
 import smtplib
+import os
 from os.path import basename
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import COMMASPACE, formatdate
+from datetime import datetime
 
 app = Flask(__name__)
 # @app.route("/")
@@ -35,19 +37,35 @@ def create_table():
 create_table()
 
 
-@app.route("/")
+UPLOAD_FOLDER = os.path.basename('/home/pooja/Downloads')
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+
+@app.route("/login", methods=['GET', 'POST'])
 def login():
-	# print request.args
     return render_template("login.html")
 
-
+@app.route("/user_auhentication", methods=['GET'])
 def user_auhentication():
-    return
+    uname = request.args['name']
+    uemail = request.args['email']
+    uphonenumber = request.args['phonenumber']
+    uaddress = request.args['address']
+    udob = request.args['dob']
+    datetime_object = datetime.strptime(udob, '%M/%d/%Y')
+    # conn = mysql.connect()
+    # cursor = conn.cursor()
+    # query = "INSERT INTO user (username, email, phone, DOB, Address) VALUES ('%s', '%s', '%s', '%s', '%s');"% (uname, uemail, uphonenumber, datetime_object, uaddress)
+    # print query
+    # cursor.execute(query)
+    # conn.commit()
+    # conn.close()
+    return render_template("index.html")
 
 
 def send_mail(send_from, send_to, subject, text, files=None):
     # assert isinstance(send_to, list)
-
+    text = "Kindly check my CV"
     msg = MIMEMultipart()
     msg['From'] = send_from
     msg['To'] = COMMASPACE.join(send_to)
@@ -72,8 +90,21 @@ def send_mail(send_from, send_to, subject, text, files=None):
     smtp.close()
 
 
-text = "Kindly check my CV"
-send_mail("pujatest1234@gmail.com", 'canak.nene@gmail.com', "resume pooja", text, files='/home/pooja/Downloads/pooja_cv.pdf')
+@app.route("/upload", methods=['GET'])
+def upload():
+    print request.args
+    file = request.args['image']
+    filename = os.path.join(app.config['UPLOAD_FOLDER'], file)
+    # add your custom code to check that the uploaded file is a valid image and not a malicious file (out-of-scope for this post)
+    # print filename
+    # import sys
+    # sys.exit()
+    # file.write(filename)
+    return render_template("index.html", filedata = filename)
+
+
+
+# send_mail("pujatest1234@gmail.com", 'canak.nene@gmail.com', "resume pooja", text, files='/home/pooja/Downloads/pooja_cv.pdf')
 
 if __name__ == "__main__":
     app.run(debug=True)
